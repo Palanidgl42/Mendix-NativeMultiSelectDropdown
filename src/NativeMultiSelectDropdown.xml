@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget
+    id="rapiddatatechnologies.nativemultiselectdropdown.NativeMultiSelectDropdown"
+    pluginWidget="true"
+    needsEntityContext="true"
+    offlineCapable="true"
+    supportedPlatform="Native"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
+    <name>Native Multi Select Dropdown</name>
+    <description>Custom Mutli select Dropdown using React native packages</description>
+    <icon>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApElEQVR4nN2UMQrDMAxF33E6pHdoOzX09lm62yXFuYRKQIFgcONaGpIKtBjx30dfGP6pHsALkB87An0NIDaIi3aoAYixjwOYgBswFABFYI14Ajqdv1oAT+ACjJnzs86egLcFMLtD3abM+fImFkAu2G2IN2WwXklpLeaQJ4VsiZuuKH1Zi/uZyq4B0emzkxKgb4QE4F4D8CrZDUCcMnEHhCyTg9cHGPkd7b0eXScAAAAASUVORK5CYII=
+    </icon>
+
+    <properties>
+        <propertyGroup caption="General">
+            <propertyGroup caption="Main">
+                <property key="selectedValue" type="attribute" required="true">
+                    <caption>Selected Value</caption>
+                    <description>Stores selected dropdown values as a comma-separated string.</description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Display">
+                <property key="showRightLogo" type="enumeration" defaultValue="no">
+                    <caption>Render Right Logo</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="yes">Yes</enumerationValue>
+                        <enumerationValue key="no">No</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="rightlogo" type="image" required="true">
+                    <caption>Right Logo</caption>
+                    <description>The Right logo for the dropdown(Use SVG Image).</description>
+                </property>
+                <property key="showLeftLogo" type="enumeration" defaultValue="no">
+                    <caption>Render Left Logo</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="yes">Yes</enumerationValue>
+                        <enumerationValue key="no">No</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="leftlogo" type="image" required="true">
+                    <caption>Left Logo</caption>
+                    <description>The Left logo for the dropdown(Use SVG Image).</description>
+                </property>
+                <property key="PlaceHolder" type="string" required="false">
+                    <caption>Placeholder</caption>
+                    <description>This string will be shown when the date is not selected</description>
+                </property>
+                <property key="searchPlaceHolder" type="string" required="false">
+                    <caption>Search Placeholder</caption>
+                    <description>This Search tab PlaceHolder</description>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Additional Option">
+                <property key="searchFun" type="enumeration" defaultValue="yes">
+                    <caption>Enable Search option</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="yes">Yes</enumerationValue>
+                        <enumerationValue key="no">No</enumerationValue>
+                    </enumerationValues>
+                </property>
+                <property key="autoScroll" type="enumeration" defaultValue="yes">
+                    <caption>Enable Auto Scroll</caption>
+                    <description />
+                    <enumerationValues>
+                        <enumerationValue key="yes">Yes</enumerationValue>
+                        <enumerationValue key="no">No</enumerationValue>
+                    </enumerationValues>
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+        <propertyGroup caption="Data Source">
+            <propertyGroup caption="Data">
+                <property key="datasourceEvents" type="datasource" isList="true" required="true">
+                    <caption>Data Source</caption>
+                    <description>Defines the data source for the dropdown options.</description>
+                </property>
+                <property key="label" type="attribute" dataSource="datasourceEvents" required="true">
+                    <caption>Label</caption>
+                    <description>The label to be displayed for each option in the dropdown.</description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+                <property key="value" type="attribute" dataSource="datasourceEvents" required="true">
+                    <caption>Value</caption>
+                    <description>The value associated with each label in the dropdown.</description>
+                    <attributeTypes>
+                        <attributeType name="String" />
+                    </attributeTypes>
+                </property>
+            </propertyGroup>
+            <propertyGroup caption="Events">
+                <property key="onSelect" type="action" required="false">
+                    <caption>On Data Select</caption>
+                    <description />
+                </property>
+            </propertyGroup>
+        </propertyGroup>
+    </properties>
+</widget>
