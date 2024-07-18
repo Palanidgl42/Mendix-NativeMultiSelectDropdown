@@ -74,11 +74,12 @@ export function NativeElementMutliSelectDropdown({
     showRightLogo,
     showLeftLogo,
     leftlogo,
-    searchPlaceHolder
+    searchPlaceHolder,
+    hasValue
 }) {
     const styles = mergeNativeStyles(defaultStyle, style);
 
-    const [value, setValue] = useState([]);
+    const [value, setValue] = useState([hasValue]);
 
     const renderRightIcon = () => {
         if (showRightLogo === "yes") {
@@ -118,7 +119,7 @@ export function NativeElementMutliSelectDropdown({
                 valueField="value"
                 placeholder={PlaceHolder ? PlaceHolder : ""}
                 searchPlaceholder={searchPlaceHolder ? searchPlaceHolder : "Search..."}
-                value={value}
+                value={hasValue}
                 onChange={handleChange}
                 renderRightIcon={renderRightIcon}
                 renderLeftIcon={renderLeftIcon}

@@ -1,5 +1,5 @@
 /* eslint-disable sort-imports */
-import { createElement } from "react";
+import { createElement, useState, useEffect } from "react";
 
 import { NativeElementMutliSelectDropdown } from "./components/NativeElementMutliSelectDropdown";
 
@@ -19,6 +19,29 @@ export function NativeMultiSelectDropdown({
     showLeftLogo,
     searchPlaceHolder
 }) {
+    const [hasValue, setHasValue] = useState([]);
+
+    useEffect(() => {
+        const updateHasValue = () => {
+            if (selectedValue?.status === "available") {
+                const valueToCheck = selectedValue.value || "";
+                const hasValues =
+                    typeof valueToCheck === "string" && valueToCheck.includes(",")
+                        ? valueToCheck.split(",").map(item => item.trim())
+                        : valueToCheck
+                        ? [valueToCheck]
+                        : [];
+
+                setHasValue(hasValues);
+                console.warn("values", hasValues);
+            } else {
+                setHasValue([]);
+            }
+        };
+
+        updateHasValue();
+    }, [selectedValue]);
+
     const dropdownData =
         datasourceEvents && datasourceEvents.items
             ? datasourceEvents.items.map(item => {
@@ -45,6 +68,7 @@ export function NativeMultiSelectDropdown({
             leftlogo={leftlogo}
             showLeftLogo={showLeftLogo}
             searchPlaceHolder={searchPlaceHolder}
+            hasValue={hasValue}
         />
     );
 }
